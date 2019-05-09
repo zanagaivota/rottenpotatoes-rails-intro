@@ -11,4 +11,15 @@ class Movie < ActiveRecord::Base
         end
     end
 
+    def self.ratings
+        Movie.select('DISTINCT rating').map(&:rating)
+    end
+
+    def self.selected_ratings(ratings, field)
+        if ratings.length == 0
+            Movie.all
+        else
+            Movie.where({ rating: ratings }).ordered(field)
+        end
+    end
 end
