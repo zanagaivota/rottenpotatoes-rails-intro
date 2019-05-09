@@ -3,20 +3,12 @@
 
 = form_tag movies_path, :method => :get, :id => 'ratings_form' do
   Include:
+  = hidden_field_tag(:sort, @field)
   - @all_ratings.each do |rating|
     = rating
     = check_box_tag "ratings[#{rating}]", 1,  @checked_ratings_keys.include?(rating) 
      
   = submit_tag 'Refresh', :id => 'ratings_submit'
-
-
--# - if @checked_ratings != nil
--#   %p#filter_summary
--#     %span Filtered by: 
--#     - @checked_ratings_keys.each do |item|
--#       %span= item
-
-
 
 %table#movies
   %thead

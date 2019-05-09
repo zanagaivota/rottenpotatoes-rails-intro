@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.ratings
     @checked_ratings = params[:ratings]
     @checked_ratings == nil ? @checked_ratings_keys = @all_ratings : @checked_ratings_keys = params[:ratings].keys
-    field = params[:sort]  
-    @movies = Movie.selected_ratings(@checked_ratings_keys, field)
+    @field = params[:sort]  
+    @movies = Movie.selected_ratings(@checked_ratings_keys, @field)
   end
 
   def new
